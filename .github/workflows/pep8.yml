@@ -1,0 +1,33 @@
+name: AutoPep8 
+
+on: [push]
+
+jobs: 
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true # To not waste any time here :) 
+      matrix:
+        python-version: ["3.8","3.9","3.10"]
+    steps: 
+    - uses: actions/checkout@v2 
+    - name: Setup Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2 
+      with: 
+        python-version: ${{ matrix.python-version }}
+
+# Run autopep8: https://github.com/marketplace/actions/autopep8 
+    - name: Run AutoPep8 styling 
+      uses: peter-evans/autopep8@v1 
+      with: 
+        args: --recursive --in-place . 
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v3
+      with:
+          commit-message: autopep8 action fixes
+          title: Fixes by autopep8 action
+          body: This is an auto-generated PR with fixes by autopep8.
+          labels: autopep8, automated pr
+          reviewers: agf46
+          branch: autopep8-patches
