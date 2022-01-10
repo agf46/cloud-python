@@ -3,9 +3,8 @@
 # - List Groups a user belongs to
 # - List Policies associated with user 
  
-
+import csv
 import boto3 
-import csv 
 
 # Init IAM boto3 resource to list roles
 # NOTE: The session is created by using creds available under ~/.aws/credentials
