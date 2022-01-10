@@ -1,18 +1,16 @@
 # Simple python script to get all roles in a given AWS env
 # To do:
 # - List Groups a user belongs to
-<<<<<<< HEAD
-# - List Policies associated with user 
- 
+import boto3
 import csv
-import boto3 
-=======
+<< << << < HEAD
+# - List Policies associated with user
+
+== == == =
 # - List Policies associated with user
 
 
-import boto3
-import csv
->>>>>>> 3d071d5daad8f5a1761a92d46e31958b9925aa15
+>>>>>> > 3d071d5daad8f5a1761a92d46e31958b9925aa15
 
 # Init IAM boto3 resource to list roles
 # NOTE: The session is created by using creds available under ~/.aws/credentials
